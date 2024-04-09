@@ -8,26 +8,33 @@ using namespace std;
 //
 //
 //}
-int factorial(int n)
-{
+//int factorial(int n)
+//{
+//
+//    if (n == 1)
+//    {
+//        return 1;
+//    }
+//    return n * factorial(n - 1);
+//}
 
+float rec(int n)
+{
     if (n == 1)
     {
         return 1;
+
     }
-    return n * factorial(n - 1);
+    float res = pow(-1, 2 * n - 1) * (3 * n - 4) / (3*n);
+    return res * rec(n - 1);
+
 }
+
 
 
 int main()
 {
-    float E;
-    float x;
-    printf("Enter the E value:");
-    scanf_s("%f", &E);
-    printf("Enter the x value:");
-    scanf_s("%f", &x);
-    int i = 2;
+    /*int i = 2;
     int j = 0;
     float slog = 0;
     float sum = 0;
@@ -47,8 +54,30 @@ int main()
 
 
     }
+    printf("The sum of row with E mistake:%f\nControl sum:%f", sum, contr_sum);*/
+    float E;
+    float x;
+    printf("Enter the E value:");
+    scanf_s("%f", &E);
+    printf("Enter the x value:");
+    scanf_s("%f", &x);
+    float slog = x;
+    float sum = slog;
+    float contr_sum = 0;
+    int i = 2;
+    while (bool start = true)
+    {
+        slog = pow(x, i) * rec(i);
+        printf("%f\n", slog);
+        if (abs(slog) < E)
+        {
+            break;
+        }
+        sum = sum + slog;
+        i++;
+    }
+    contr_sum = 3 * cbrt(1 + x) - 3;
     printf("The sum of row with E mistake:%f\nControl sum:%f", sum, contr_sum);
   
-    
 }
 
